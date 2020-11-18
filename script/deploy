@@ -3,18 +3,27 @@
 ssh ubuntu@18.130.249.32 <<EOF
     cd ~/test-angular-jenkins
     git pull origin master
+    echo "Pull Completed"
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
     . ~/.nvm/nvm.sh
     nvm install v12.18.3
+    echo "Node Completed"
     sudo apt update
     sudo apt install nginx
+    echo "NGINX Completed"
     sudo chmod 777 /var/www/html/*
     npm install
     npm install -g @angular/cli
-    ng -v 
+    echo "Angular cli Completed"
+    ng -v
+    echo "Build started"
     npm run build
+    echo "Build Completed"
     sudo cp -r build/ /var/www/html/
+    echo "Build Copied"
     sudo service nginx restart
+    echo "Nginx Restart"
     sudo service nginx status
+    echo "Nginx Status"
     exit
 EOF
