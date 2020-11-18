@@ -11,7 +11,7 @@ ssh ubuntu@18.130.249.32 <<EOF
     sudo apt update
     sudo apt install nginx
     sudo chmod 777 /var/www/html/*
-    sudo cp -r build/ /var/www/html/
+    sudo cp -r ./build/ /var/www/html/
     sudo systemctl restart nginx
     exit
 EOF
